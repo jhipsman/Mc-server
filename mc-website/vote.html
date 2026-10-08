@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vote - My Survival Server</title>
+  <meta name="description" content="Vote for My Survival Server on Minecraft server lists.">
+  <meta name="theme-color" content="#0b0f14">
+  <meta property="og:title" content="Vote - My Survival Server">
+  <meta property="og:description" content="Vote for My Survival Server on Minecraft server lists.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-icon" src="assets/favicon.svg" alt="" width="32" height="32">
+        <span data-server-name>My Survival Server</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="rules.html">Rules</a>
+        <a href="join.html">How to Join</a>
+        <a href="vote.html" aria-current="page">Vote</a>
+        <a class="nav-store" href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Vote for the Server</h1>
+        <p>Voting pushes us higher on server lists so new players can find us. It takes 30 seconds, and you can vote on every site daily.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="vote-list" id="vote-list"></div>
+        <div class="callout">
+          <strong>Tip:</strong> Use your exact Minecraft username when voting. Most sites ask you to complete a captcha and wait a few seconds before your vote counts.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; <span data-year>2026</span> <span data-server-name>My Survival Server</span>. Not affiliated with Mojang or Microsoft.</div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="rules.html">Rules</a>
+        <a href="join.html">How to Join</a>
+        <a href="vote.html">Vote</a>
+        <a href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Store</a>
+        <a href="https://discord.gg/your-invite" data-discord-link target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

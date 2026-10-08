@@ -1,0 +1,23 @@
+# Server runtime files - keep the repo to scripts + config only
+*.jar
+/world*/
+/backups/
+/logs/
+/cache/
+/libraries/
+/versions/
+/crash-reports/
+/plugins/
+/config/
+/debug/
+banned-*.json
+ops.json
+usercache.json
+whitelist.json
+permissions.yml
+help.yml
+commands.yml
+bukkit.yml
+spigot.yml
+mcrcon.exe
+SurvivalPlus/target/

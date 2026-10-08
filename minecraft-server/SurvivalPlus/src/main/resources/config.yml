@@ -1,0 +1,140 @@
+# ============================================================================
+#  SurvivalPlus configuration
+#  Run /survivalplus reload after editing.
+#  Material and entity names: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+#                             https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+# ============================================================================
+
+xp:
+  # Multiplies every XP reward below. 2.0 = double XP weekend.
+  global-multiplier: 1.0
+  # Players in creative/spectator mode never earn XP.
+  ignore-creative: true
+  # Show "+5 XP (Mining)" above the hotbar.
+  show-action-bar: true
+
+  mining:
+    # Silk-touching an ore gives no XP (prevents place/silk/mine loops).
+    ignore-silk-touch: true
+    # Blocks placed by players never give mining XP.
+    blocks:
+      COAL_ORE: 2
+      DEEPSLATE_COAL_ORE: 2.5
+      COPPER_ORE: 2
+      DEEPSLATE_COPPER_ORE: 2.5
+      IRON_ORE: 4
+      DEEPSLATE_IRON_ORE: 5
+      GOLD_ORE: 6
+      DEEPSLATE_GOLD_ORE: 7
+      REDSTONE_ORE: 4
+      DEEPSLATE_REDSTONE_ORE: 5
+      LAPIS_ORE: 5
+      DEEPSLATE_LAPIS_ORE: 6
+      DIAMOND_ORE: 15
+      DEEPSLATE_DIAMOND_ORE: 18
+      EMERALD_ORE: 20
+      DEEPSLATE_EMERALD_ORE: 24
+      NETHER_QUARTZ_ORE: 3
+      NETHER_GOLD_ORE: 3
+      ANCIENT_DEBRIS: 35
+      STONE: 0.1
+      DEEPSLATE: 0.15
+      NETHERRACK: 0.05
+
+  farming:
+    # Crops only give XP when fully grown.
+    crops:
+      WHEAT: 1.5
+      CARROTS: 1.5
+      POTATOES: 1.5
+      BEETROOTS: 1.5
+      NETHER_WART: 2
+      COCOA: 2
+    # Other harvestable blocks (player-placed ones give nothing).
+    blocks:
+      MELON: 2
+      PUMPKIN: 2
+
+  mobs:
+    # Mobs from monster spawners give this fraction of normal XP.
+    spawner-multiplier: 0.25
+    # XP for hostile mobs not listed below.
+    default-hostile: 4
+    # XP for passive/neutral mobs not listed below.
+    default-passive: 0.5
+    entities:
+      ZOMBIE: 5
+      HUSK: 5
+      DROWNED: 6
+      SKELETON: 6
+      STRAY: 6
+      SPIDER: 5
+      CAVE_SPIDER: 6
+      CREEPER: 8
+      ENDERMAN: 10
+      WITCH: 12
+      SLIME: 2
+      MAGMA_CUBE: 2
+      BLAZE: 10
+      GHAST: 12
+      WITHER_SKELETON: 15
+      PIGLIN_BRUTE: 15
+      GUARDIAN: 10
+      ELDER_GUARDIAN: 100
+      SHULKER: 12
+      PHANTOM: 8
+      PILLAGER: 8
+      VINDICATOR: 12
+      EVOKER: 25
+      RAVAGER: 40
+      BREEZE: 15
+      WARDEN: 200
+      WITHER: 400
+      ENDER_DRAGON: 750
+
+  fishing:
+    # Anything in the "fishes" item tag (cod, salmon, pufferfish, tropical fish)
+    fish: 8
+    # Treasure and junk (books, saddles, bows, etc.)
+    other: 12
+
+leveling:
+  max-level: 100
+  # XP needed to go from level N to N+1 = base-xp * N ^ exponent
+  # Defaults: lvl 1->2 = 100, lvl 10->11 = 3,162, lvl 50->51 = 35,355
+  base-xp: 100
+  exponent: 1.5
+
+perks:
+  extra-hearts:
+    enabled: true
+    # +hearts-per-step hearts every N levels (level 5 = +1, level 10 = +2 ...)
+    every-levels: 5
+    hearts-per-step: 1
+    max-extra-hearts: 10
+  # tiers: <level reached>: <effect level>  (1 = Speed I, 2 = Speed II)
+  speed:
+    enabled: true
+    tiers:
+      10: 1
+      40: 2
+  haste:
+    enabled: true
+    tiers:
+      15: 1
+      50: 2
+
+storage:
+  # SQLite file inside plugins/SurvivalPlus/
+  file: survivalplus.db
+  # How often online players' progress is written to disk (it is also saved on quit).
+  autosave-minutes: 5
+
+messages:
+  prefix: "&8[&6Survival&e+&8] &r"
+  level-up: "&aLevel up! &7You are now level &e{level}&7."
+  level-up-broadcast: "&e{player} &7reached level &6{level}&7!"
+  # Broadcast to everyone when a player reaches a multiple of this level (0 = never)
+  broadcast-every: 10
+  perk-unlocked: "&bPerk unlocked: &f{perk}"
+  action-bar: "&a+{xp} XP &7({source}) &8| &7Lvl &e{level} &8[&a{progress}%&8]"

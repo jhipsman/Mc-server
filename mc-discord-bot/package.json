@@ -1,0 +1,19 @@
+{
+  "name": "mc-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for a Minecraft server: live status, chat bridge, /status and /whitelist requests.",
+  "main": "src/index.js",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.5"
+  }
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Server Dashboard</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%235bd16a'/><path d='M3 11l3-4 3 2 4-5' stroke='%230b0f14' stroke-width='2' fill='none'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <h1>Server Dashboard</h1>
+      <span class="sub" id="server-info">Connecting&hellip;</span>
+    </div>
+    <div class="pill" id="status-pill"><span class="dot"></span><span id="status-text">Loading</span></div>
+  </header>
+
+  <main>
+    <section class="tiles" aria-label="Current stats">
+      <div class="tile"><div class="label">Players</div><div class="value" id="t-players">&ndash;</div><div class="hint" id="t-players-max"></div></div>
+      <div class="tile"><div class="label">TPS (1m)</div><div class="value" id="t-tps">&ndash;</div><div class="hint" id="t-tps-hint"></div></div>
+      <div class="tile"><div class="label">Host CPU</div><div class="value" id="t-cpu">&ndash;</div><div class="hint">whole machine</div></div>
+      <div class="tile"><div class="label">Host RAM</div><div class="value" id="t-ram">&ndash;</div><div class="hint" id="t-ram-hint"></div></div>
+      <div class="tile"><div class="label">JVM heap</div><div class="value" id="t-jvm">&ndash;</div><div class="hint" id="t-jvm-hint">needs EssentialsX</div></div>
+      <div class="tile"><div class="label">Uptime</div><div class="value" id="t-uptime">&ndash;</div><div class="hint" id="t-updated"></div></div>
+    </section>
+
+    <div class="range" role="group" aria-label="Chart time range">
+      <button type="button" data-hours="1">1h</button>
+      <button type="button" data-hours="6" class="active">6h</button>
+      <button type="button" data-hours="24">24h</button>
+    </div>
+
+    <section class="charts">
+      <figure class="panel">
+        <figcaption><h2>TPS</h2><span class="muted" id="tps-caption">Dashed line = alert threshold</span></figcaption>
+        <div class="chart-box"><canvas id="tps-chart" aria-label="TPS over time" role="img"></canvas></div>
+      </figure>
+      <figure class="panel">
+        <figcaption><h2>Players online</h2></figcaption>
+        <div class="chart-box"><canvas id="players-chart" aria-label="Players online over time" role="img"></canvas></div>
+      </figure>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Online now <span class="count" id="online-count">0</span></h2>
+        <ul class="online-list" id="online-list"><li class="muted">Nobody online</li></ul>
+      </div>
+      <div class="panel">
+        <h2>Watchdog</h2>
+        <dl class="kv" id="watchdog">
+          <dt>Status</dt><dd class="muted">Not running</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Join / leave log</h2>
+        <div class="table-wrap">
+          <table class="log">
+            <thead><tr><th>Time</th><th>Player</th><th>Event</th><th>Session</th></tr></thead>
+            <tbody id="player-log"><tr><td colspan="4" class="muted">No activity yet</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Alerts</h2>
+        <ul class="alerts" id="alerts"><li class="muted">No alerts</li></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

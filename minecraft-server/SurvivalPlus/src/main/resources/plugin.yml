@@ -1,0 +1,40 @@
+name: SurvivalPlus
+version: '${project.version}'
+main: com.survivalplus.SurvivalPlus
+api-version: '1.21'
+description: ${project.description}
+authors: [jhipsman]
+
+commands:
+  stats:
+    description: Show your SurvivalPlus level, XP and time played.
+    usage: /<command> [player]
+    aliases: [level, skills]
+    permission: survivalplus.stats
+  leaderboard:
+    description: Show the top 10 players by level.
+    usage: /<command>
+    aliases: [lb, top]
+    permission: survivalplus.leaderboard
+  survivalplus:
+    description: SurvivalPlus admin commands.
+    usage: /<command> <reload|setlevel|addxp>
+    aliases: [splus]
+    permission: survivalplus.admin
+
+permissions:
+  survivalplus.stats:
+    description: Use /stats
+    default: true
+  survivalplus.stats.others:
+    description: Use /stats <player>
+    default: true
+  survivalplus.leaderboard:
+    description: Use /leaderboard
+    default: true
+  survivalplus.earn:
+    description: Earn SurvivalPlus XP
+    default: true
+  survivalplus.admin:
+    description: Reload config and edit player levels
+    default: op

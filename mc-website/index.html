@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Survival Server - Minecraft Survival</title>
+  <meta name="description" content="A community Minecraft survival server with skill levels, perks, land claims and an active Discord.">
+  <meta name="theme-color" content="#0b0f14">
+  <meta property="og:title" content="My Survival Server - Minecraft Survival">
+  <meta property="og:description" content="A community Minecraft survival server with skill levels, perks, land claims and an active Discord.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-icon" src="assets/favicon.svg" alt="" width="32" height="32">
+        <span data-server-name>My Survival Server</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">&#9776;</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="rules.html">Rules</a>
+        <a href="join.html">How to Join</a>
+        <a href="vote.html">Vote</a>
+        <a class="nav-store" href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Minecraft Java Survival</span>
+        <h1 data-server-name>My Survival Server</h1>
+        <p class="lead" data-tagline>Community survival with skills, perks and protected land.</p>
+        <button class="ip-box" type="button" data-copy-ip aria-label="Copy server address">
+          <span class="ip" data-server-ip>play.example.com</span>
+          <span class="ip-action">Click to copy</span>
+        </button>
+        <div>
+          <div class="status is-loading" data-status>
+            <span class="status-dot"></span>
+            <span class="status-label">Checking&hellip;</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="join.html">How to Join</a>
+          <a class="btn btn-ghost" href="https://discord.gg/your-invite" data-discord-link target="_blank" rel="noopener">Join our Discord</a>
+          <a class="btn btn-gold" href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Visit Store</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What makes us different</h2>
+          <p>Pure survival at its core, with a few quality-of-life upgrades that reward you for playing.</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#9935;&#65039;</div>
+            <h3>Skill levels</h3>
+            <p>Earn XP from mining, farming, fighting and fishing. Level up to unlock extra hearts, Speed and Haste.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#128737;&#65039;</div>
+            <h3>Protected land</h3>
+            <p>Claim your base with <code>/claim</code> or a golden shovel. Nobody can grief or steal from inside your claim, and every block change is logged.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#128188;</div>
+            <h3>Fair economy</h3>
+            <p>Trade with players, set homes and warp around. No pay-to-win: the store sells cosmetics and perks only.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#128172;</div>
+            <h3>Active community</h3>
+            <p>In-game chat is linked to Discord, so you can talk to players even when you're not online.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Live server status</h2>
+          <p>Updated every minute.</p>
+        </div>
+        <div class="stats-panel">
+          <div class="stat"><div class="value" id="player-count">&ndash;</div><div class="label">Players online</div></div>
+          <div class="stat"><div class="value" id="player-max">&ndash;</div><div class="label">Max players</div></div>
+          <div class="stat"><div class="value" style="font-size:1.4rem;padding:10px 0" data-mc-version>1.21.x</div><div class="label">Version</div></div>
+        </div>
+        <ul class="player-list" id="player-list" aria-label="Players online"></ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Level perks</h2>
+          <p>Every level brings you closer to the next reward. Type <code>/stats</code> in game to see your progress and <code>/leaderboard</code> to see the top 10.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="perk-table">
+            <thead><tr><th>Level</th><th>Reward</th></tr></thead>
+            <tbody>
+              <tr><td>Every 5 levels</td><td>+1 max health heart (up to +10)</td></tr>
+              <tr><td>10</td><td>Speed I</td></tr>
+              <tr><td>15</td><td>Haste I</td></tr>
+              <tr><td>40</td><td>Speed II</td></tr>
+              <tr><td>50</td><td>Haste II</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta">
+          <h2>Support the server</h2>
+          <p>Ranks and cosmetics from the store keep the server online and lag-free. Voting daily helps new players find us.</p>
+          <div class="hero-actions" style="margin-top:0">
+            <a class="btn btn-gold" href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Open Store</a>
+            <a class="btn btn-ghost" href="vote.html">Vote for us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>&copy; <span data-year>2026</span> <span data-server-name>My Survival Server</span>. Not affiliated with Mojang or Microsoft.</div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="rules.html">Rules</a>
+        <a href="join.html">How to Join</a>
+        <a href="vote.html">Vote</a>
+        <a href="https://your-store.tebex.io" data-store-link target="_blank" rel="noopener">Store</a>
+        <a href="https://discord.gg/your-invite" data-discord-link target="_blank" rel="noopener">Discord</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
