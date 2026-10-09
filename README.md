@@ -34,3 +34,5 @@ Everything for running a Minecraft survival server on Windows: the server itself
 ```
 
 Ports: **25565/TCP** is the only port to forward on your router (game). **25565/UDP** (query), **25575/TCP** (RCON) and **8080** (dashboard) should stay local.
+
+See [ROADMAP.md](ROADMAP.md) for planned features.
