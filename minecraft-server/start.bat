@@ -52,6 +52,31 @@ if errorlevel 1 (
     goto :end
 )
 
+REM ---- Refuse to start with an insecure RCON setup --------------------------
+set "RCON_ON="
+set "RCON_PASS="
+if exist "server.properties" (
+    for /f "usebackq tokens=1,* delims==" %%A in ("server.properties") do (
+        if /i "%%A"=="enable-rcon" set "RCON_ON=%%B"
+        if /i "%%A"=="rcon.password" set "RCON_PASS=%%B"
+    )
+)
+if /i not "%RCON_ON%"=="true" goto :rcon_ok
+if "%RCON_PASS%"=="" (
+    echo [NOTICE] enable-rcon=true but rcon.password is empty - RCON will stay off.
+    echo          Set a long random rcon.password in server.properties to use the bot/dashboard.
+    goto :rcon_ok
+)
+if /i "%RCON_PASS%"=="CHANGE_ME_TO_A_LONG_RANDOM_PASSWORD" goto :rcon_bad
+if "%RCON_PASS:~11,1%"=="" goto :rcon_bad
+goto :rcon_ok
+:rcon_bad
+echo [ERROR] RCON is enabled with a placeholder or short ^(under 12 characters^) password.
+echo         Set rcon.password in server.properties to a long random value,
+echo         or set enable-rcon=false.
+goto :end
+:rcon_ok
+
 echo Starting %SERVER_JAR% with %MIN_RAM% / %MAX_RAM% RAM...
 
 REM Note: Aikar's original -XX:G1RSetUpdatingPauseIntervalMillis flag is omitted

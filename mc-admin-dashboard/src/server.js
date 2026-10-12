@@ -10,6 +10,7 @@ app.disable('x-powered-by');
 
 // ---- Public endpoint (no auth, CORS) - used by mc-website for the live player count.
 // Same JSON shape as api.mcsrvstat.us so the website can switch between them.
+// Counts only: player names are not exposed on this unauthenticated, CORS-open endpoint.
 app.get('/api/public/status', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
   res.set('Cache-Control', 'public, max-age=15');
@@ -26,7 +27,6 @@ app.get('/api/public/status', (req, res) => {
     players: {
       online: s.players,
       max: s.maxPlayers,
-      list: (s.playerNames || []).map((name) => ({ name })),
     },
   });
 });

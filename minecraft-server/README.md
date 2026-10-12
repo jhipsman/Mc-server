@@ -56,7 +56,7 @@ Open `eula.txt`, read https://aka.ms/MinecraftEULA, and change `eula=false` to `
 
 Edit `server.properties`:
 
-- `rcon.password=`: set a **long random password**. The Discord bot and admin dashboard use it. Never share it, and **never port-forward 25575**.
+- `rcon.password=`: ships **blank** (RCON stays off). Set a **long random password** (12+ characters; `start.bat` refuses to start with the old placeholder or a shorter one while `enable-rcon=true`). The Discord bot and admin dashboard use it. Never share it, and **never port-forward 25575**.
 - `motd=`: your server's message in the multiplayer list. `§` is the color code symbol (`§a` = green, `§l` = bold).
 
 ### 5. Allocate RAM

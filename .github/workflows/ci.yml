@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Build SurvivalPlus
+        working-directory: minecraft-server/SurvivalPlus
+        run: mvn -B package
+
+  node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [mc-discord-bot, mc-admin-dashboard]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install
+        working-directory: ${{ matrix.project }}
+        run: npm install --no-audit --no-fund
+      - name: Syntax check
+        working-directory: ${{ matrix.project }}
+        run: find src -name '*.js' -print0 | xargs -0 -n1 node --check

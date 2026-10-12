@@ -29,6 +29,7 @@ set "DEST=%BACKUP_DIR%\world-%STAMP%"
 
 REM ---- Optional: tell a running server to flush and pause saving -------------
 set "USE_RCON=0"
+set "FAILED=0"
 if exist "mcrcon.exe" (
     for /f "usebackq tokens=1,* delims==" %%A in ("server.properties") do (
         if /i "%%A"=="rcon.password" set "RCON_PASS=%%B"
@@ -36,7 +37,8 @@ if exist "mcrcon.exe" (
         if /i "%%A"=="enable-rcon" set "RCON_ON=%%B"
     )
     if /i "!RCON_ON!"=="true" if not "!RCON_PASS!"=="" (
-        mcrcon.exe -H 127.0.0.1 -P !RCON_PORT! -p "!RCON_PASS!" "say Backup starting..." "save-off" "save-all flush" >nul 2>&1
+        set "MCRCON_PASS=!RCON_PASS!"
+        mcrcon.exe -H 127.0.0.1 -P !RCON_PORT! "say Backup starting..." "save-off" "save-all flush" >nul 2>&1
         if not errorlevel 1 (
             set "USE_RCON=1"
             echo Server auto-save paused for backup.
@@ -56,6 +58,7 @@ for %%W in (%WORLDS%) do (
         robocopy "%%W" "%DEST%\%%W" /E /R:2 /W:2 /NFL /NDL /NJH /NJS /NP /XF session.lock >nul
         if errorlevel 8 (
             echo [ERROR] Failed to copy %%W
+            set "FAILED=1"
         ) else (
             echo   copied %%W
             set "COPIED=1"
@@ -64,8 +67,14 @@ for %%W in (%WORLDS%) do (
 )
 
 if "%USE_RCON%"=="1" (
-    mcrcon.exe -H 127.0.0.1 -P !RCON_PORT! -p "!RCON_PASS!" "save-on" "say Backup complete." >nul 2>&1
-    echo Server auto-save resumed.
+    set "MCRCON_PASS=!RCON_PASS!"
+    mcrcon.exe -H 127.0.0.1 -P !RCON_PORT! "save-on" "say Backup complete." >nul 2>&1
+    if errorlevel 1 (
+        echo [ERROR] Could not re-enable auto-save over RCON - run save-on manually!
+        set "FAILED=1"
+    ) else (
+        echo Server auto-save resumed.
+    )
 )
 
 if "%COPIED%"=="0" (
@@ -81,4 +90,5 @@ if exist "%BACKUP_DIR%" (
 
 echo Done.
 if "%COPIED%"=="0" exit /b 1
+if "%FAILED%"=="1" exit /b 1
 exit /b 0
